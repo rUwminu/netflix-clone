@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext } from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom'
+import { AuthContext } from './Context/AuthContext/AuthContext'
+
+import { Home, Watch, Login, Register } from './pages/index'
 
 function App() {
+  const { user } = useContext(AuthContext)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Switch>
+        <Route path='/netflix-clone' exact>
+          {user ? <Home /> : <Redirect to='/register' />}
+        </Route>
+        <Route path='/register'>
+          {!user ? <Register /> : <Redirect to='/netflix-clone' />}
+        </Route>
+        <Route path='/login'>
+          {!user ? <Login /> : <Redirect to='/netflix-clone' />}
+        </Route>
+        {user && (
+          <>
+            <Route path='/movies'>
+              <Home type='movie' />
+            </Route>
+            <Route path='/series'>
+              <Home type='series' />
+            </Route>
+            <Route path='/watch'>
+              <Watch />
+            </Route>
+          </>
+        )}
+      </Switch>
+    </Router>
+  )
 }
 
-export default App;
+export default App
