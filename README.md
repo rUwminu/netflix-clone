@@ -5,7 +5,7 @@
 
 <h2>About this project</h2>
 <p>Just a practicing project for my portfolio on cloning other excellent website</p>
-<p>The home page design is a some how old design of netflix *Because I don't own a account, but the main focus is to practice on interact with backend data and output of it.</p>
+<p>The home page design is a some how old design of netflix *Because I don't own a netflix account, but the main focus is to practice on interact with backend data and output of it.</p>
 <p>There a admin panel in my repo used to manage the movie list that I can perform CRUD function, feel free to check it out. repo name 'movie-admin-panel'</p>
 
 <h2>Ready Created Account & Password</h1>
